@@ -1,9 +1,13 @@
 package com.gpssos;
 
+import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
+
+// react-native-splash-screen >= 0.3.1
+import org.devio.rn.splashscreen.SplashScreen; // here
 
 public class MainActivity extends ReactActivity {
 
@@ -32,4 +36,14 @@ public class MainActivity extends ReactActivity {
         DefaultNewArchitectureEntryPoint.getConcurrentReactEnabled() // concurrentRootEnabled
         );
   }
+
+  /*@Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
+  }*/
+  @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        //SplashScreen.show(this);  // Descomentar esta linea cuando este lista la splashScreen
+        super.onCreate(savedInstanceState);
+    }
 }
