@@ -36,6 +36,14 @@ export const PerfilScreen = ( {navigation}: Props ) => {
       <Button
         title="Cerrar Sesión"
       />
+      <Button 
+        title='Login'
+        onPress={() => navigation.navigate('LoginScreen')}
+      />
+       <Button 
+        title='Registro'
+        onPress={() => navigation.navigate('RegistroScreen')}
+      />
     </View>
   )
 }

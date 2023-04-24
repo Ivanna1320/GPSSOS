@@ -3,7 +3,6 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NtfScreen } from '../screens/NtfScreen';
 import { InicioScreen } from '../screens/InicioScreen';
-import { Tab3Screen } from '../screens/Tab3Screen';
 import { colores, styles } from '../theme/appTheme';
 import { PerfilNavigator } from './PerfilNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -15,7 +14,7 @@ export const Tabs = () => {
   return (
     <Tab.Navigator
       sceneAnimationEnabled={ true }
-     // initialRouteName="InicioScreen"
+     initialRouteName="LoginScreen"
       barStyle = {{
         backgroundColor: colores.primary,
         borderTopWidth: 0,
