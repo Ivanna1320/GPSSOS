@@ -10,7 +10,7 @@ export const colores = {
 
 export const styles = StyleSheet.create({
     globalMargin: {
-        marginHorizontal: 20
+        marginHorizontal: 15
     },
     title: {
         fontSize: 30,
@@ -193,5 +193,18 @@ datos: {
     image: {
       width: 170,
       height: 170,
+    },
+
+    //Diseños de pantalla
+    iconImg: {
+      width: 35,
+      height: 35
+    },
+    item2: {
+      backgroundColor: '#D3D3D3',
+      padding: 10,
+      marginVertical: 10,
+      marginHorizontal: 20,
+      borderRadius: 20
     },
 })
