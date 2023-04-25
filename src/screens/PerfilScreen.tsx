@@ -70,15 +70,12 @@ export const PerfilScreen = ( {navigation}: Props ) => {
         title='Login'
         onPress={() => navigation.navigate('LoginScreen')}
       />
-       <Button 
-        title='Registro'
-        onPress={() => navigation.navigate('RegistroScreen')}
-      />
+      
 
       <View>
             <View style={ styles.ButtonCerrar}>
               <TouchableOpacity style={ styles.btnCerrar}
-                onPress={ () => navigation.navigate('ContactosScreen')}
+                //onPress={ () => navigation.navigate('')}
               >
                   <Text style={ styles.btnTextCerrar }> Cerrar Sesión <Text style={ styles.texto }> <Icon name="exit-outline"
                   size={25} 
