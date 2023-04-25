@@ -2,7 +2,10 @@ import { StyleSheet } from "react-native";
 
 export const colores = {
     primary: '#9510C3',
-    secondary: '#D800C2'
+    secondary: '#D800C2',
+    green: '#32CD32',
+    blue: '#0288D1',
+    white: '#F4F4F4'
 }
 
 export const styles = StyleSheet.create({
@@ -30,7 +33,6 @@ export const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: 'bold',
         textAlign: 'center',
-        margin: 40,
         color: colores.secondary
     },
     h4: {
@@ -149,5 +151,47 @@ datos: {
     },
     texto: {
       color: 'black'
-    }
+    },
+    //Diseño de perfil
+    btnVerMas: {
+      width: 60,
+      height: 23,
+      borderRadius: 5,
+      backgroundColor: colores.blue,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    btnText: {
+      color: 'white',
+      textAlign: 'center',
+      fontSize: 14
+    },
+    btnTextCerrar: {
+      color: 'white',
+      textAlign: 'center',
+      fontSize: 16
+    },
+    btnCerrar: {
+      width: 150,
+      height: 50,
+      padding:5,
+      borderRadius: 5,
+      backgroundColor: 'red',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    ButtonCerrar: {
+      margin: 65,
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    container: {
+      marginBottom: 15,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    image: {
+      width: 200,
+      height: 200,
+    },
 })
