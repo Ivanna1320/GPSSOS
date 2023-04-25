@@ -28,12 +28,12 @@ export const NtfScreen = () => {
             <View style={ styles.barra}>
                 <Text style={ styles.titleBar }> Notificaciones </Text>
             </View>
-            <View>
-            <FlatList
-                data={data}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-            />
+            <View style={ styles.globalMargin}>
+              <FlatList
+                  data={data}
+                  renderItem={renderItem}
+                  keyExtractor={(item) => item.id}
+              />
             </View>
         </View>
     )

@@ -14,6 +14,7 @@ export const PerfilNavigator = () => {
     <Stack.Navigator
       //initialRouteName='Pagina2Screen'
       screenOptions={{ //cambia el color de todas las PantallaScreen
+        //headerShown: false, Borrar linea de arriba
         headerStyle: {
           elevation: 0,
         },
