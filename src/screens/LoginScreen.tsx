@@ -19,7 +19,12 @@ export const LoginScreen = ( {navigation}: Props ) => {
                 <TextInput style={ styles.h5login } />
                 <Text style={ styles.h4login }> Contraseña: </Text>
                 <TextInput style={ styles.h5login } secureTextEntry/>
-                <Text style={ styles.h6logintext }>¿No tienes cuenta?<Text style={ styles.h6login }> Registrate </Text></Text>
+                <Text style={ styles.h6logintext }>¿No tienes cuenta?
+                    <Text 
+                        onPress={ () => navigation.navigate('RegistroScreen') } 
+                        style={ styles.h6login }> Registrate 
+                    </Text>
+                </Text>
 
                 <View style={styles.btningresar}>
                     <TouchableOpacity style={styles.ingresar}>
