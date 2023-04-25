@@ -40,7 +40,7 @@ export const Tabs = () => {
               iconName = 'person'
             break;
           }
-          return <Icon name={ iconName } size={ 28 } color={ color } />
+          return <Icon name={ iconName } size={ 28 } color={ colores.white } />
         }
       })}
       
