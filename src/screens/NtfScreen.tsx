@@ -12,7 +12,14 @@ export const NtfScreen = () => {
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Text style={styles.title2}>{item.title}</Text>
+      <Text style={styles.title2}>
+        <Text>
+          {item.icon}
+        </Text>
+        {item.title}
+      </Text>
+        <Text>{item.texto}</Text>
+      
     </View>
   );
 
@@ -35,9 +42,20 @@ export const NtfScreen = () => {
 
 
 const data = [
-    { id: '1', title: 'Elemento 1' },
-    { id: '2', title: 'Elemento 2' },
-    { id: '3', title: 'Elemento 3' },
-    { id: '4', title: 'Elemento 4' },
-    { id: '5', title: 'Elemento 5' },
+  { id: '1', 
+    title: 'Solicitud Aceptada', 
+    icon: <Icon name="checkmark-circle"
+      size={25} 
+      color="green" />,
+    texto: <Text style={ styles.texto }> <Text style={ styles.negrita }>Nombre de Usuario</Text> ha aceptado tu solicitud</Text> 
+  },
+
+  { id: '2', 
+    title: 'Solicitud Rechazada',
+    icon: <Icon name="close-circle"
+      size={25} 
+      color="red" />,
+      texto: <Text style={ styles.texto }> <Text style={ styles.negrita }>Nombre de Usuario</Text> ha rechazado tu solicitud</Text> 
+  },
+  { id: '3', title: 'Elemento 3' },
   ];

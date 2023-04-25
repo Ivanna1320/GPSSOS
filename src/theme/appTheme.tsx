@@ -131,13 +131,23 @@ datos: {
       },
 
       //Diseños de Screen Notificaciones
-      item: {
-        backgroundColor: '#f9c2ff',
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
-      },
-      title2: {
-        fontSize: 32,
-      },
+    item: {
+      backgroundColor: '#D3D3D3',
+      padding: 15,
+      marginVertical: 10,
+      marginHorizontal: 20,
+      borderRadius: 20
+    },
+    title2: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      margin: 0,
+      color: colores.secondary
+    },
+    negrita: {
+      fontWeight: 'bold',
+    },
+    texto: {
+      color: 'black'
+    }
 })
