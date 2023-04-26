@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { View, Text, Button, FlatList, Image, TouchableOpacity } from 'react-native'
 import { styles } from '../theme/appTheme';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { stylesContact } from '../theme/contactTheme';
 
 
 interface Props extends StackScreenProps<any, any>{};
@@ -15,15 +16,22 @@ export const ContactosScreen = ({ navigation }: Props ) => {
   }, [])
 
   const ContactItem = ({ item }) => (
-    <View style={styles.item2}>
-      <Text style={styles.title2}>
-        <Text>
+    <View style={stylesContact.item}>
+      <View>
+        <Text >
           {item.img}
         </Text>
-        {item.title}
-      </Text>
-        <Text>{item.texto}</Text>
+      </View>
+      
+      <View>
+        <Text style={stylesContact.title}>{item.title}</Text>
+        <Text style={stylesContact.texto}>{item.texto}</Text>
+      </View>
+      
+      <View>
         <Text>{item.icon}</Text>
+      </View>
+        
       
     </View>
   );
@@ -64,13 +72,13 @@ export const ContactosScreen = ({ navigation }: Props ) => {
 
 const dataContact = [
   { id: '1', 
+    img: <Image source={require('../assets/images/imgUser.png')} style={stylesContact.iconImg} />,
     title: 'Nombre de contacto',
-    img: <Image source={require('../assets/images/imgUser.png')} style={styles.iconImg} />,
-    texto: <Text style={ styles.texto }> <Text style={ styles.negrita }> ID: </Text> 123 456 789 </Text>,
+    texto: <Text style={ stylesContact.texto }> <Text style={ stylesContact.negrita }> ID: </Text> 123 456 789 </Text>,
     icon: <TouchableOpacity>
               <Text>
                 <Icon name="trash-outline"
-                  size={25} 
+                  size={35} 
                   color="red" />
               </Text>
           </TouchableOpacity>
@@ -78,12 +86,12 @@ const dataContact = [
 
   { id: '2', 
     title: 'Nombre de contacto',
-    img: <Image source={require('../assets/images/imgUser.png')} style={styles.iconImg} />,
-    texto: <Text style={ styles.texto }> <Text style={ styles.negrita }> ID: </Text> 123 456 789 </Text>,
+    img: <Image source={require('../assets/images/imgUser.png')} style={stylesContact.iconImg} />,
+    texto: <Text style={ stylesContact.texto }> <Text style={ stylesContact.negrita }> ID: </Text> 123 456 789 </Text>,
     icon: <TouchableOpacity>
               <Text>
                 <Icon name="trash-outline"
-                  size={25} 
+                  size={35} 
                   color="red" />
               </Text>
           </TouchableOpacity>

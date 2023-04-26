@@ -21,9 +21,6 @@ export const InicioScreen = () => {
                     </TouchableOpacity>
                 </View>
             </View>
-            
-            
-            
         </View>
     )
 }

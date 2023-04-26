@@ -4,18 +4,19 @@ import { View, Button, Text, Image  } from 'react-native'
 import { colores, styles } from '../theme/appTheme'
 import { TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
+import { ScrollView } from 'react-native-gesture-handler'
 
 
 interface Props extends StackScreenProps<any, any>{};
 
 export const PerfilScreen = ( {navigation}: Props ) => {
   return (
-    <View style={ styles.globalMargin}>
-      <View>
-        <Text style={ styles.title }> Perfil </Text>
+    <View>
+      <View style={ styles.barra}>
+        <Text style={ styles.titleBar }> Perfil </Text>
       </View>
 
-      <View>
+      <ScrollView style={ styles.globalMargin}>
         <View style={styles.container}>
           <Image source={require('../assets/images/imgUser.png')} style={styles.image} />
         
@@ -25,15 +26,15 @@ export const PerfilScreen = ( {navigation}: Props ) => {
           <Text style={ styles.h3 }> Nombre de Usuario </Text>
         </View>
 
-        <View>
+        <View style={ styles.datosPerfil}>
           <Text style={ styles.h4 }> Correo electronico: <Text style={ styles.h5 }> email@gmail.com </Text> </Text>
         </View>
 
-        <View>
+        <View style={ styles.datosPerfil}>
           <Text style={ styles.h4 }> Celular: <Text style={ styles.h5 }> 314 123 4567 </Text> </Text>
         </View>
 
-        <View>
+        <View style={ styles.datosPerfil}>
           <Text style={ styles.h4 }> Contactos: 
             <View style={ styles.btnVerMas}>
               <TouchableOpacity 
@@ -45,7 +46,7 @@ export const PerfilScreen = ( {navigation}: Props ) => {
           </Text>
         </View>
 
-        <View>
+        <View style={ styles.datosPerfil}>
           <Text style={ styles.h4 }> Agregar contacto: 
             <View style={ styles.btnVerMas}>
               <TouchableOpacity 
@@ -59,30 +60,23 @@ export const PerfilScreen = ( {navigation}: Props ) => {
           </Text>
         </View>
         
-      </View>
-      
-      <Button
-        title="Ir página 2"
-        onPress={ () => navigation.navigate('AgregarScreen') }
-      />
-      
-      <Button 
-        title='Login'
-        onPress={() => navigation.navigate('LoginScreen')}
-      />
-      
+        <Button 
+          title='Login'
+          onPress={() => navigation.navigate('LoginScreen')}
+        />
 
-      <View>
-            <View style={ styles.ButtonCerrar}>
-              <TouchableOpacity style={ styles.btnCerrar}
-                //onPress={ () => navigation.navigate('')}
-              >
-                  <Text style={ styles.btnTextCerrar }> Cerrar Sesión <Text style={ styles.texto }> <Icon name="exit-outline"
-                  size={25} 
-                  color="white" /> </Text> </Text>
-              </TouchableOpacity> 
-            </View>
-      </View>
+        <View>
+          <View style={ styles.ButtonCerrar}>
+            <TouchableOpacity style={ styles.btnCerrar}
+              //onPress={ () => navigation.navigate('')}
+            >
+                <Text style={ styles.btnTextCerrar }> Cerrar Sesión <Text style={ styles.texto }> <Icon name="exit-outline"
+                size={25} 
+                color="white" /> </Text> </Text>
+            </TouchableOpacity> 
+              </View>
+        </View>
+      </ScrollView>
 
 
 

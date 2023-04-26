@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { View, Button, Text, TextInput, TouchableOpacity  } from 'react-native'
+import { View, Button, Text, TextInput, TouchableOpacity, Image  } from 'react-native'
 import { colores, styles } from '../theme/appTheme'
 import { ScrollView } from 'react-native-gesture-handler'
 
@@ -9,32 +9,50 @@ interface Props extends StackScreenProps<any, any>{};
 export const RegistroScreen = ( {navigation}: Props ) => {
   return (
     <View >
-            <View style={ styles.barra}>
-                <Text style={ styles.titleBar }> Registro </Text>
-            </View>
-            <View>
-                <Text style={ styles.h3 }> imagen </Text>
-            </View>
-            <ScrollView>
+              
+        <ScrollView>
+            <View style={ styles.globalMargin}>
+                <View style={styles.container}>
+                    <Image source={require('../assets/images/logo.jpeg')} style={styles.image} />
+                </View>
+
+                <View>
+                    <Text style={ styles.h3 }> REGISTRO </Text>
+                </View>
+
                 <Text style={ styles.h4login }> Nombre: </Text>
-                <TextInput style={ styles.h5login } />
+                    <TextInput style={ styles.h5login } />
+
                 <Text style={ styles.h4login }> Apellidos: </Text>
-                <TextInput style={ styles.h5login } />
+                    <TextInput style={ styles.h5login } />
+
                 <Text style={ styles.h4login }> Correo electronico: </Text>
-                <TextInput style={ styles.h5login } />
+                    <TextInput keyboardType='email-address' style={ styles.h5login } />
+                
                 <Text style={ styles.h4login }> Contraseña: </Text>
-                <TextInput style={ styles.h5login } />
+                    <TextInput secureTextEntry={true} style={ styles.h5login } />
+                
                 <Text style={ styles.h4login }> Confirmar contraseña : </Text>
-                <TextInput style={ styles.h5login } />
+                    <TextInput secureTextEntry={true} style={ styles.h5login } />
+                
                 <Text style={ styles.h4login }> Celular: </Text>
-                <TextInput style={ styles.h5login } />
-                    
+                    <TextInput keyboardType='numeric' style={ styles.h5login } />
+
+                <Text style={ styles.h6logintext }>¿Ya tienes una cuenta?
+                    <Text 
+                        onPress={ () => navigation.navigate('LoginScreen') } 
+                        style={ styles.h6login }> Iniciar Sesión
+                    </Text>
+                </Text>
+
                 <View style={styles.btningresar}>
                     <TouchableOpacity style={styles.ingresar}>
                         <Text style={styles.buttonIngresar}>Registrarse</Text>
                     </TouchableOpacity>
                 </View>
-            </ScrollView>
-        </View>
+            </View>
+            
+        </ScrollView>
+    </View>
   )
 }
