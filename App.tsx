@@ -8,7 +8,7 @@ import SplashScreen from 'react-native-splash-screen'
 
 export default function App() {
   useEffect(() => {
-    //SplashScreen.hide(); //Descomentar para utilizar la splashscreen y en MainActivity.java
+    SplashScreen.hide(); //Descomentar para utilizar la splashscreen y en MainActivity.java
   }, []);
 
   return (

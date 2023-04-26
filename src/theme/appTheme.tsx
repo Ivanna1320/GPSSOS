@@ -10,7 +10,8 @@ export const colores = {
 
 export const styles = StyleSheet.create({
     globalMargin: {
-        marginHorizontal: 15
+        //marginHorizontal: 15
+        margin: 20
     },
     title: {
         fontSize: 30,
@@ -59,9 +60,10 @@ export const styles = StyleSheet.create({
     h5login: {//estilo para los campos de entrada del login
 
       borderWidth: 1.8, 
-      borderRadius: 20, 
+      borderRadius: 15, 
       borderColor: '#E35FC4',
       fontSize: 18,
+      padding: 8,
       backgroundColor: '#e3e2e2',
       fontWeight: 'bold',
       margin: 2,
@@ -88,7 +90,7 @@ export const styles = StyleSheet.create({
       width:250,
       borderRadius: 15,
       justifyContent: 'center',
-      backgroundColor: colores.primary,
+      backgroundColor: colores.blue,
       alignItems: "center",
   },
     btningresar: {
@@ -174,14 +176,14 @@ datos: {
     btnCerrar: {
       width: 150,
       height: 50,
-      padding:5,
+      padding: 4,
       borderRadius: 5,
       backgroundColor: 'red',
       justifyContent: 'center',
       alignItems: 'center'
     },
     ButtonCerrar: {
-      margin: 65,
+      margin: 20,
       justifyContent: 'center',
       alignItems: 'center'
     },
@@ -194,17 +196,19 @@ datos: {
       width: 170,
       height: 170,
     },
+    datosPerfil:{
+      padding: 8
+    },
 
-    //Diseños de pantalla
-    iconImg: {
-      width: 35,
-      height: 35
-    },
-    item2: {
-      backgroundColor: '#D3D3D3',
-      padding: 10,
-      marginVertical: 10,
-      marginHorizontal: 20,
-      borderRadius: 20
-    },
+    //Ventana de AgregarScreen
+    btnAdd: {
+      width: 150,
+      height: 50,
+      padding: 4,
+      borderRadius: 5,
+      backgroundColor: colores.blue,
+      flexDirection:'row',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
 })

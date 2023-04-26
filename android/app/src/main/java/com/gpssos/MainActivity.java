@@ -43,7 +43,7 @@ public class MainActivity extends ReactActivity {
   }*/
   @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //SplashScreen.show(this);  // Descomentar esta linea cuando este lista la splashScreen
+        SplashScreen.show(this);  // Descomentar esta linea cuando este lista la splashScreen
         super.onCreate(savedInstanceState);
     }
 }

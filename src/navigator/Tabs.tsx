@@ -14,12 +14,9 @@ export const Tabs = () => {
   return (
     <Tab.Navigator
       sceneAnimationEnabled={ true }
-     initialRouteName="LoginScreen"
+      initialRouteName="LoginScreen"
       barStyle = {{
         backgroundColor: colores.primary,
-        borderTopWidth: 0,
-        elevation: 0,
-        
       }}
 
       screenOptions={ ({ route }) => ({
@@ -40,7 +37,7 @@ export const Tabs = () => {
               iconName = 'person'
             break;
           }
-          return <Icon name={ iconName } size={ 28 } color={ colores.white } />
+          return <Icon name={ iconName } size={ 30 } color={ colores.white } />
         }
       })}
       
@@ -51,10 +48,3 @@ export const Tabs = () => {
     </Tab.Navigator>
   );
 }
-
-const styles3 = StyleSheet.create({
-  text: {
-    fontFamily: 'nombre-de-la-fuente',
-    fontSize: 18
-  },
-});
