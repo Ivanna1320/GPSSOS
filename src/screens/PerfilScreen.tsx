@@ -5,6 +5,7 @@ import { colores, styles } from '../theme/appTheme'
 import { TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler'
+import auth from '@react-native-firebase/auth'
 
 
 interface Props extends StackScreenProps<any, any>{};
@@ -59,16 +60,11 @@ export const PerfilScreen = ( {navigation}: Props ) => {
             </View> 
           </Text>
         </View>
-        
-        <Button 
-          title='Login'
-          onPress={() => navigation.navigate('LoginScreen')}
-        />
 
         <View>
           <View style={ styles.ButtonCerrar}>
             <TouchableOpacity style={ styles.btnCerrar}
-              //onPress={ () => navigation.navigate('')}
+              onPress={ () => auth().signOut()}
             >
                 <Text style={ styles.btnTextCerrar }> Cerrar Sesión <Text style={ styles.texto }> <Icon name="exit-outline"
                 size={25} 

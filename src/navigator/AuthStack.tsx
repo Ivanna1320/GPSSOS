@@ -1,15 +1,16 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { PerfilScreen } from '../screens/PerfilScreen';
-import { AgregarScreen } from '../screens/AgregarScreen';
-import { ContactosScreen } from '../screens/ContactosScreen';
 import { RegistroScreen } from '../screens/auth/RegistroScreen';
 import { styles } from '../theme/appTheme';
 import { LoginScreen } from '../screens/auth/LoginScreen';
+import auth from '@react-native-firebase/auth'
+import { Tabs } from './Tabs';
 
 const Stack = createStackNavigator();
 
-export const PerfilNavigator = () => {
+export const AuthNavigator = () => {
+    const user = auth().currentUser;
+
   return (
     <Stack.Navigator
       //initialRouteName='Pagina2Screen'
@@ -26,11 +27,20 @@ export const PerfilNavigator = () => {
         }
       }}
     >
-      <Stack.Screen name="PerfilScreen" options={{ title:"Perfil"}} component={PerfilScreen} />
-      <Stack.Screen name="AgregarScreen" options={{ title:"Agregar Contacto"}} component={AgregarScreen} />
-      <Stack.Screen name="ContactosScreen" options={{ title:"Contactos"}} component={ContactosScreen} />
-      <Stack.Screen name="LoginScreen" options={{ title:"Login"}} component={LoginScreen} />
-      <Stack.Screen name="RegistroScreen" options={{ title:"Registro"}} component={RegistroScreen} />
+        {
+            user ? (
+              <>
+                <Stack.Screen name="Home" options={{ title:"Home"}} component={Tabs} />              
+              </>
+                
+            )
+            : 
+            <>
+              <Stack.Screen name="LoginScreen" options={{ title:"Login"}} component={LoginScreen} />
+              <Stack.Screen name="RegistroScreen" options={{ title:"Registro"}} component={RegistroScreen} />
+            </>
+        }
+
     </Stack.Navigator>
   );
 }
