@@ -13,6 +13,10 @@ export const styles = StyleSheet.create({
         //marginHorizontal: 15
         margin: 20
     },
+    error: {
+      color: colores.blue,
+      
+    },
     title: {
         fontSize: 30,
         marginBottom: 10
@@ -73,7 +77,13 @@ export const styles = StyleSheet.create({
 
       color: '#0075FF'
   },//estilo para el texto de registarse
-    h6logintext: {
+  btnBox: {
+    paddingHorizontal: 20,
+    backgroundColor: 'gray',
+    paddingVertical: 10,
+    borderRadius: 10
+  }, 
+  h6logintext: {
 
       fontWeight: 'bold',
       alignItems: "center",

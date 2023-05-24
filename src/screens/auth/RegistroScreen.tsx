@@ -1,9 +1,11 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import React, { useState } from 'react';
-import { View, Button, Text, TextInput, TouchableOpacity, Image  } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { View, Button, Text, TextInput, TouchableOpacity, Image, Pressable  } from 'react-native';
 import { colores, styles } from '../../theme/appTheme';
 import { ScrollView } from 'react-native-gesture-handler';
 import useAuth from '../../hooks/useAuth'
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
 import database from '@react-native-firebase/database'
 
@@ -11,11 +13,41 @@ interface Props extends StackScreenProps<any, any>{};
 
 export const RegistroScreen = ( {navigation}: Props ) => {
 
-    const { email, setEmail, password, setPassword, onRegister} = useAuth()
+    const { email, setEmail, 
+        password, setPassword, 
+        confirmPass, setConfirmPass, 
+        onRegister} = useAuth()
+    const [nombre, setNombre] = useState('');
+    
+    //const contentRef = useRef<any>();
+
+    const [ useData, setUserData] = useState({});
+    useEffect(() => {
+        GoogleSignin.configure({
+            webClientId: '18752727933-rloes7gmi3s84q9e7f2lbajs20h917l7.apps.googleusercontent.com',
+        });
+    }, []);
+
+    const googleSignIn = async () => {
+        // Check if your device supports Google Play
+        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+        // Get the users ID token
+        const { idToken } = await GoogleSignin.signIn();
+      
+        // Create a Google credential with the token
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      
+        // Sign-in the user with the credential
+        return auth().signInWithCredential(googleCredential);
+      }
+
+    /*const handleSaveNote = () => {
+
+        navigation.goBack();
+    }*/
 
     return (
-    <View >
-              
+    <View >    
         <ScrollView>
             <View style={ styles.globalMargin}>
                 <View style={styles.container}>
@@ -29,7 +61,8 @@ export const RegistroScreen = ( {navigation}: Props ) => {
                 <Text style={ styles.h4login }> Nombre: </Text>
                     <TextInput style={ styles.h5login } 
                         placeholder='Nombre'
-                        //onChangeText={val => setNombre(val)}
+                        onChangeText={nombre => setNombre(nombre)}
+                        value={nombre}
                     />
 
                 <Text style={ styles.h4login }> Apellidos: </Text>
@@ -51,16 +84,20 @@ export const RegistroScreen = ( {navigation}: Props ) => {
                         secureTextEntry={true}
                         onChangeText={password => setPassword(password)}
                         value={password}
-                        keyboardType='email-address'  
+                        keyboardType='default'  
                         returnKeyType='next' 
                         blurOnSubmit={false}
                     />
                 
                 <Text style={ styles.h4login }> Confirmar contraseña : </Text>
-                    <TextInput secureTextEntry={true} style={ styles.h5login } />
+                    <TextInput secureTextEntry={true} 
+                        style={ styles.h5login } 
+                        onChangeText={confirmPass => setConfirmPass(confirmPass)}
+                    />
                 
                 <Text style={ styles.h4login }> Celular: </Text>
                     <TextInput keyboardType='numeric' style={ styles.h5login } />
+
 
                 <Text style={ styles.h6logintext }>¿Ya tienes una cuenta?
                     <Text 
@@ -68,6 +105,31 @@ export const RegistroScreen = ( {navigation}: Props ) => {
                         style={ styles.h6login }> Iniciar Sesión
                     </Text>
                 </Text>
+
+                <View style={ styles.btnBox }>
+                    <Pressable
+                        onPress={() => 
+                            googleSignIn()
+                            .then(res => {
+                            console.log(res)
+                            setUserData(res.user);  
+                        }).catch(error => console.log(error))
+                        }
+                    >
+                        <Text style={styles.buttonIngresar}>Google Signin</Text>
+                    </Pressable>
+                </View>
+                <View>
+                        <Text> 
+                            UID: <Text> { useData.uid } </Text> {' '} 
+                        </Text>
+                        <Text> 
+                            Name: <Text> { useData.displayName } </Text> {' '} 
+                        </Text>
+                        <Text> 
+                            Email: <Text> { useData.email } </Text> {' '} 
+                        </Text>
+                    </View>
 
                 <View style={styles.btningresar}>
                     <TouchableOpacity style={styles.ingresar} onPress={onRegister}>
