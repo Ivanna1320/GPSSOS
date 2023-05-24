@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import React from 'react'
+import React, { useState} from 'react'
 import { View, Button, Text, Image  } from 'react-native'
 import { colores, styles } from '../theme/appTheme'
 import { TouchableOpacity } from 'react-native'
@@ -8,9 +8,11 @@ import { ScrollView } from 'react-native-gesture-handler'
 import auth from '@react-native-firebase/auth'
 
 
+
 interface Props extends StackScreenProps<any, any>{};
 
 export const PerfilScreen = ( {navigation}: Props ) => {
+  const [ useData, setUserData] = useState({});
   return (
     <View>
       <View style={ styles.barra}>
@@ -28,7 +30,11 @@ export const PerfilScreen = ( {navigation}: Props ) => {
         </View>
 
         <View style={ styles.datosPerfil}>
-          <Text style={ styles.h4 }> Correo electronico: <Text style={ styles.h5 }> email@gmail.com </Text> </Text>
+          <Text style={ styles.h4 }> Correo electronico: 
+            <Text 
+              style={ styles.h5 }> { useData.email } 
+            </Text> {' '}
+           </Text>
         </View>
 
         <View style={ styles.datosPerfil}>
