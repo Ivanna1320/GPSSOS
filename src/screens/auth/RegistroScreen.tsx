@@ -16,30 +16,14 @@ export const RegistroScreen = ( {navigation}: Props ) => {
     const { email, setEmail, 
         password, setPassword, 
         confirmPass, setConfirmPass, 
-        onRegister} = useAuth()
+        onRegister, googleSignIn} = useAuth()
     const [nombre, setNombre] = useState('');
+
     
     //const contentRef = useRef<any>();
 
     const [ useData, setUserData] = useState({});
-    useEffect(() => {
-        GoogleSignin.configure({
-            webClientId: '18752727933-rloes7gmi3s84q9e7f2lbajs20h917l7.apps.googleusercontent.com',
-        });
-    }, []);
-
-    const googleSignIn = async () => {
-        // Check if your device supports Google Play
-        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-        // Get the users ID token
-        const { idToken } = await GoogleSignin.signIn();
-      
-        // Create a Google credential with the token
-        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-      
-        // Sign-in the user with the credential
-        return auth().signInWithCredential(googleCredential);
-      }
+    
 
     /*const handleSaveNote = () => {
 
@@ -88,7 +72,7 @@ export const RegistroScreen = ( {navigation}: Props ) => {
                         returnKeyType='next' 
                         blurOnSubmit={false}
                     />
-                
+                {/*  */}
                 <Text style={ styles.h4login }> Confirmar contraseña : </Text>
                     <TextInput secureTextEntry={true} 
                         style={ styles.h5login } 
