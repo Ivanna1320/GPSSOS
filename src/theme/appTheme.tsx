@@ -81,7 +81,12 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: 'gray',
     paddingVertical: 10,
-    borderRadius: 10
+    borderRadius: 10,
+    margin: 15,
+    width: 250,
+    fontSize: 30,
+    justifyContent: 'center',
+    alignItems: 'center'
   }, 
   h6logintext: {
 

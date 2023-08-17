@@ -3,13 +3,16 @@ import React, { useState } from 'react';
 import { View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
 import { colores, styles } from '../../theme/appTheme';
 import useAuth from '../../hooks/useAuth';
-import { IconButton } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { Pressable } from 'react-native';
 
 interface Props extends StackScreenProps<any, any> {}
 
 export const LoginScreen = ({ navigation }: Props) => {
-  const { email, setEmail, password, setPassword, Login } = useAuth();
+  const { email, setEmail, password, setPassword, Login, googleSignIn } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  const [useData, setUserData] = useState({});
+
 
   return (
     <View>
@@ -44,9 +47,11 @@ export const LoginScreen = ({ navigation }: Props) => {
             blurOnSubmit={false}
             secureTextEntry={!showPassword}
           />
-          <IconButton
-            icon={showPassword ? 'eye-off' : 'eye'}
+          
+          <Icon
+            name={showPassword ? 'eye-off-outline' : 'eye-outline'}
             onPress={() => setShowPassword(!showPassword)}
+            size={35} 
           />
         </View>
 
@@ -62,6 +67,28 @@ export const LoginScreen = ({ navigation }: Props) => {
             <Text style={styles.buttonIngresar}>Ingresar</Text>
           </TouchableOpacity>
         </View>
+
+        <Text style={styles.h6logintext}>
+          O Inicia sesión con tu cuenta Google: 
+        </Text>
+
+        <View style={ styles.btningresar }>
+          <View style={styles.btnBox}>
+            <Pressable
+              onPress={() =>
+                googleSignIn()
+                  .then(res => {
+                    console.log(res)
+                    setUserData(res.user);
+                  }).catch(error => console.log(error))
+              }
+            >
+              <Text style={styles.buttonIngresar}>Google Sign in</Text>
+            </Pressable>
+          </View>
+        </View>
+        
+        
       </View>
     </View>
   );
