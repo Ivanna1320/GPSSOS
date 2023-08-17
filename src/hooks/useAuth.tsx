@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import auth from '@react-native-firebase/auth'
 import database from '@react-native-firebase/database'
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { ToastAndroid } from 'react-native';
 
 
 
@@ -22,11 +23,23 @@ const useAuth = () => {
     }, []);
     
     const Login = () => {
-        auth()
+        /*auth()
         .signInWithEmailAndPassword(email, password)
         .then( user => {
             console.log(user);
-        });
+        });*/
+        if (email.length > 0 && password.length > 0) {
+            auth()
+                .signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    ToastAndroid.show(' signed in!', ToastAndroid.LONG);
+                })
+                .catch(error => {
+                    ToastAndroid.show(error.message, ToastAndroid.LONG);
+                });
+        } else {
+            ToastAndroid.show("Enter email/password", ToastAndroid.LONG);
+        }
     };
 
     const googleSignIn = async () => {
@@ -42,7 +55,7 @@ const useAuth = () => {
         return auth().signInWithCredential(googleCredential);
       }
 
-      const handleSignOutGoogle = async () => {
+    const handleSignOutGoogle = async () => {
         try {
           await GoogleSignin.revokeAccess();
           await auth().signOut()
@@ -51,6 +64,15 @@ const useAuth = () => {
         } catch (error) {
           console.error(error);
         }
+      };
+
+      //cerrar sesion con cuenta solo de correo
+    const handleSignOut = () => {
+        auth()
+          .signOut()
+          .then(() =>
+            ToastAndroid.show('Se ha cerrado la sesión', ToastAndroid.LONG),
+          );
       };
 
     const onRegister = () => {
@@ -65,31 +87,22 @@ const useAuth = () => {
         }*/
         //database().ref('usuarios').push(data);
         
-        if( email ) {
+        if (email) {
             setMessageError('');
 
-            if( password && confirmPass) {
+            if (password && confirmPass) {
                 setMessageError('');
 
-                if( password.length > 6 && password === confirmPass) {
+                if (password.length > 6 && password === confirmPass) {
                     //true
-
                     auth()
-                    .createUserWithEmailAndPassword(email, password)
-                    .then(() => {
-                        console.log('User account created & signed in!');
-                    })
-                    .catch(error => {
-                        if (error.code === 'auth/email-already-in-use') {
-                        console.log('That email address is already in use!');
-                        }
-
-                        if (error.code === 'auth/invalid-email') {
-                        console.log('That email address is invalid!');
-                        }
-
-                        console.error(error);
-                    });
+                        .createUserWithEmailAndPassword(email, password)
+                        .then(() => {
+                            ToastAndroid.show(' signed in!', ToastAndroid.LONG);
+                        })
+                        .catch(error => {
+                            ToastAndroid.show(error.message, ToastAndroid.LONG);
+                        });
                 } else {
                     setMessageError('La contrasena debe contener maximo 6 digitos');
                 }
@@ -108,6 +121,7 @@ const useAuth = () => {
         onRegister,
         googleSignIn,
         handleSignOutGoogle,
+        handleSignOut,
         email, 
         password,
         confirmPass,
